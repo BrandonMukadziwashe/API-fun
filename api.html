@@ -68,10 +68,10 @@
     			let str2HTML = "<ul>";
     			data.forEach(book => {
     				str2HTML += "</br>" 
-    					+ "Name: " + book.etag + "</br> Type: " 
-    					+ book.kind + "</br> ID: " 
+    					+ "Name: " + book.name + "</br> Type: " 
+    					+ book.type + "</br> ID: " 
     					+ book.id + "</br> Available: " 
-    					+ book.selfLink + "</br>";
+    					+ book.available + "</br>";
     			});
     			str2HTML += "</ul>";
     			// Display book data in HTML
