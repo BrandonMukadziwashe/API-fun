@@ -27,7 +27,7 @@
         function loadFile() {
 			request = new XMLHttpRequest();
 			console.log("1 - request object created");
-			request.open("GET", "https://simple-books-api.glitch.me/books", true);
+			request.open("GET", "https://www.googleapis.com/books/v1/volumes?q=" + request, true);
 			console.log("2 - opened request file"); 
 			request.onreadystatechange = function() {  
 				console.log("3 - readystatechange event fired.");
@@ -61,21 +61,21 @@
 
     <script>
     	// Fetch book data from API
-    	fetch('https://simple-books-api.glitch.me/books')
+    	fetch('https://www.googleapis.com/books/v1/volumes?q=search+terms')
     		.then(response => response.json())
     		.then(data => {
     			// Construct HTML for book data
     			let str2HTML = "<ul>";
     			data.forEach(book => {
     				str2HTML += "</br>" 
-    					+ "Name: " + book.name + "</br> Type: " 
-    					+ book.type + "</br> ID: " 
+    					+ "Name: " + book.etag + "</br> Type: " 
+    					+ book.kind + "</br> ID: " 
     					+ book.id + "</br> Available: " 
-    					+ book.available + "</br>";
+    					+ book.selfLink + "</br>";
     			});
     			str2HTML += "</ul>";
     			// Display book data in HTML
-    			document.getElementById("fetchedata").innerHTML = str2HTML;
+    			document.getElementById("fetchdata").innerHTML = str2HTML;
     		});
     </script>
 
@@ -89,7 +89,7 @@
 	<div id="data" style="border: 5px groove rgb(189, 174, 144); column-count: 3;"> Loading...</div>
 
     <h2> PART 2: using fetch </h2>
-	<div id="fetchedata" style="border: 5px groove rgb(189, 174, 144); column-count: 2;">
+	<div id="fetchdata" style="border: 5px groove rgb(189, 174, 144); column-count: 2;">
 	</div>
 
 	<h2> PART 3: The API dits</h2>
@@ -102,7 +102,7 @@
         </li>
         <li>
             <h3>cite the website where you found it</h3>
-            <p><a href="https://simple-books-api.glitch.me/books">I found it at glitch.me/books</a></p>
+            <p><a href="https://www.googleapis.com/books/v1/volumes?q=">I found it at glitch.me/books</a></p>
         </li>
         <li>
             <h3>describe the options you used for the API request</h3>
